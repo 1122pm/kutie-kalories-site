@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="Kutie Kalories: pasta bento meal prep bundles. Fresh, balanced, delicious. Fuel Your Sparkle." />
+<link rel="icon" href="data:," />
+<title>Kutie Kalories — Pasta Bento Meal Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#070405;
+  --bg2:#0d0809;
+  --panel:#140d0f;
+  --panel2:#1c1215;
+  --line:rgba(232,165,140,.26);
+  --line-soft:rgba(232,165,140,.14);
+  --rose:#e8a58c;
+  --rose-hi:#f6cfba;
+  --rose-deep:#b76e79;
+  --rose-dark:#8a4f57;
+  --pink:#e35d8e;
+  --text:#f8ede8;
+  --muted:#cdaea2;
+  --muted2:#a5837a;
+  --gold-grad:linear-gradient(100deg,#f6cfba 0%,#e8a58c 35%,#c47f66 62%,#f0bfa8 100%);
+  --radius:18px;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Jost",system-ui,sans-serif;
+  --script:"Great Vibes",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--rose-hi)}
+button{font-family:var(--sans);cursor:pointer}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,4,5,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.topbar-in{display:flex;align-items:center;gap:14px;padding:10px 18px;max-width:1120px;margin:0 auto}
+.mark{display:flex;align-items:center;text-decoration:none;line-height:0}
+.mark img{height:48px;width:auto}
+.topnav{margin-left:auto;display:flex;gap:4px}
+.topnav a{color:var(--text);text-decoration:none;font-size:.82rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-radius:999px}
+.topnav a:hover{background:var(--panel2);color:var(--rose-hi)}
+@media (max-width:560px){.topnav a{padding:8px 7px;font-size:.74rem}.mark img{height:40px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;text-align:center;padding:16px 18px 8px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 46% at 50% 30%,rgba(183,110,121,.20),transparent 70%);pointer-events:none}
+.hero-logo{height:min(40vh,340px);width:auto;max-width:86vw;margin:6px auto 0;position:relative;object-fit:contain}
+.hero-slogan{display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,9vw,3.3rem);letter-spacing:.1em;text-transform:uppercase;color:var(--rose-hi);margin:16px 0 0;line-height:1.12;position:relative;text-shadow:0 0 34px rgba(232,165,140,.35)}
+.hero-slogan .slogan-rule{height:1px;width:min(56px,13vw);background:var(--gold-grad);flex:none}
+.hero-script{font-family:var(--script);font-size:clamp(2rem,8.4vw,3.2rem);color:var(--rose-hi);margin:12px 0 2px;line-height:1.15;position:relative}
+.hero-tag{margin:0 auto;max-width:34ch;color:var(--muted);font-size:1rem;letter-spacing:.02em;position:relative}
+.deadline-chip{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:.86rem;letter-spacing:.03em;position:relative}
+.deadline-chip b{color:var(--rose-hi);font-weight:600}
+.deadline-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);flex:none;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;position:relative}
+.btn{display:inline-block;border:none;text-decoration:none;font-size:.92rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:14px 24px;border-radius:999px;transition:transform .15s ease,box-shadow .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-rose{background:var(--gold-grad);color:#2a130c;box-shadow:0 8px 26px rgba(183,110,121,.35)}
+.btn-ghost{background:transparent;color:var(--rose-hi);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--rose)}
+
+/* includes strip */
+.includes{margin:30px auto 0;max-width:920px;position:relative}
+.includes h2{font-family:var(--serif);font-size:1.05rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:center;margin:0 0 14px}
+.includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:720px){.includes-grid{grid-template-columns:repeat(4,1fr)}}
+.inc{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:16px 14px;text-align:left}
+.inc svg{width:26px;height:26px;stroke:var(--rose);fill:none;stroke-width:1.5;margin-bottom:8px}
+.inc b{display:block;font-weight:500;font-size:.98rem;letter-spacing:.02em}
+.inc span{color:var(--muted);font-size:.85rem}
+
+/* ---------- sections ---------- */
+section{padding:52px 0 6px}
+.sec-head{text-align:center;margin-bottom:26px;padding:0 18px}
+.sec-head .rule{display:flex;align-items:center;gap:14px;max-width:520px;margin:0 auto 10px}
+.sec-head .rule::before,.sec-head .rule::after{content:"";height:1px;flex:1;background:var(--gold-grad);opacity:.7}
+.sec-head .rule span{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--rose);font-weight:500}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.9rem,6.4vw,2.7rem);font-weight:600;margin:0;color:var(--rose-hi);letter-spacing:.04em}
+.sec-head p{color:var(--muted);margin:8px auto 0;max-width:52ch}
+
+/* ---------- bundles ---------- */
+.bundles{display:grid;gap:14px}
+@media(min-width:860px){.bundles{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.bundle{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px 22px 22px;position:relative;display:flex;flex-direction:column;text-align:center}
+.bundle.pop{border-color:var(--rose);background:linear-gradient(180deg,#221216,var(--panel) 55%);box-shadow:0 14px 44px rgba(183,110,121,.22)}
+.pop-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#2a130c;font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.bundle h3{font-family:var(--serif);font-size:1.45rem;letter-spacing:.1em;margin:2px 0 0;color:var(--text);font-weight:600}
+.bundle .count{color:var(--rose);letter-spacing:.34em;font-size:.8rem;text-transform:uppercase;font-weight:500;margin-top:2px}
+.bundle .price{font-family:var(--serif);font-size:3.4rem;font-weight:700;color:var(--rose-hi);line-height:1.05;margin:12px 0 2px}
+.bundle .per{color:var(--muted2);font-size:.85rem}
+.bundle ul{list-style:none;margin:16px 0 20px;padding:16px 0 0;border-top:1px solid var(--line-soft);text-align:left}
+.bundle li{padding:5px 0 5px 24px;position:relative;color:var(--muted);font-size:.94rem}
+.bundle li::before{content:"♥";position:absolute;left:2px;color:var(--rose-deep);font-size:.8rem;top:8px}
+.bundle li b{color:var(--text);font-weight:500}
+.bundle .btn{margin-top:auto;width:100%}
+.bundle.selected{outline:2px solid var(--rose);outline-offset:2px}
+.bundle .chosen-note{display:none;color:var(--rose-hi);font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;margin-top:10px}
+.bundle.selected .chosen-note{display:block}
+
+/* ---------- menu ---------- */
+.menu-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:600px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.menu-grid{grid-template-columns:repeat(3,1fr)}}
+.meal{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.meal figure{margin:0;position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--panel2)}
+.meal figure img{width:100%;height:100%;object-fit:cover}
+.meal .num{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:50%;background:rgba(7,4,5,.82);border:1px solid var(--line);color:var(--rose-hi);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1rem}
+.meal .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.meal h3{font-family:var(--serif);font-size:1.32rem;font-weight:600;letter-spacing:.03em;margin:0;color:var(--text);line-height:1.2}
+.meal p{color:var(--muted);font-size:.92rem;margin:7px 0 16px;flex:1}
+.meal .add{align-self:flex-start;background:transparent;border:1px solid var(--line);color:var(--rose-hi);border-radius:999px;padding:9px 18px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.meal .add:hover{background:var(--panel2);border-color:var(--rose)}
+.meal .add.added{background:var(--gold-grad);color:#2a130c;border-color:transparent}
+
+/* ---------- sides ---------- */
+.sides{display:grid;gap:14px}
+@media(min-width:860px){.sides{grid-template-columns:1.4fr 1fr}}
+.side-card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:22px}
+.side-card h3{font-family:var(--serif);font-size:1.3rem;margin:0 0 4px;color:var(--rose-hi);font-weight:600;letter-spacing:.04em}
+.side-card p{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:.9rem;color:var(--text);background:var(--panel2)}
+.chip i{font-style:normal;color:var(--rose);margin-right:6px}
+
+/* ---------- builder ---------- */
+.builder{background:linear-gradient(180deg,#170e11,var(--panel));border:1px solid var(--line);border-radius:24px;padding:24px 20px 26px}
+@media(min-width:720px){.builder{padding:32px 34px}}
+.builder h3{font-family:var(--serif);font-size:1.5rem;color:var(--rose-hi);margin:0 0 2px;font-weight:600}
+.builder .sub{color:var(--muted);font-size:.92rem;margin:0 0 18px}
+.step-label{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);font-weight:600;margin:22px 0 10px}
+.step-label:first-of-type{margin-top:4px}
+.pick-row{display:flex;flex-wrap:wrap;gap:8px}
+.pick{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:999px;padding:10px 16px;font-size:.92rem;font-weight:400;transition:all .13s ease}
+.pick:hover{border-color:var(--rose)}
+.pick.on{background:var(--gold-grad);color:#2a130c;border-color:transparent;font-weight:600}
+.pick small{opacity:.75;font-weight:400}
+.entree-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:760px){.entree-grid{grid-template-columns:repeat(3,1fr)}}
+.entree-grid .pick{border-radius:14px;text-align:left;padding:11px 13px;line-height:1.3}
+.entree-grid .pick b{font-weight:500;display:block;font-size:.94rem}
+.entree-grid .pick span{font-size:.76rem;color:var(--muted)}
+.entree-grid .pick.on span{color:#5a2c1e}
+.progress-wrap{margin:20px 0 4px}
+.progress-meta{display:flex;justify-content:space-between;font-size:.86rem;color:var(--muted);margin-bottom:7px}
+.progress-meta b{color:var(--rose-hi);font-weight:600}
+.progress{height:9px;border-radius:99px;background:var(--panel2);border:1px solid var(--line-soft);overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--gold-grad);transition:width .3s ease}
+.addbento{width:100%;margin-top:16px}
+.msg{font-size:.9rem;margin-top:10px;min-height:1.3em;color:var(--rose-hi)}
+.msg.err{color:#ff9d9d}
+.box-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
+.box-list li{background:var(--panel2);border:1px solid var(--line-soft);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
+.box-list .n{font-family:var(--serif);font-weight:700;color:var(--rose);font-size:1.1rem;line-height:1.2}
+.box-list .d{flex:1;font-size:.92rem}
+.box-list .d b{font-weight:500}
+.box-list .d span{color:var(--muted);display:block;font-size:.84rem}
+.box-list .rm{background:none;border:none;color:var(--muted2);font-size:1.15rem;line-height:1;padding:2px 4px}
+.box-list .rm:hover{color:#ff9d9d}
+.empty-note{color:var(--muted2);font-size:.9rem;border:1px dashed var(--line);border-radius:14px;padding:16px;text-align:center;margin-top:16px}
+.fulfil{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.fulfil .pick{border-radius:14px;padding:13px;text-align:center}
+.fulfil .pick b{display:block;font-weight:500}
+.fulfil .pick span{font-size:.8rem;color:var(--muted)}
+.fulfil .pick.on span{color:#5a2c1e}
+.total-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line-soft);margin-top:22px;padding-top:16px}
+.total-row .t{font-size:.8rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.total-row .v{font-family:var(--serif);font-size:2.1rem;font-weight:700;color:var(--rose-hi)}
+.total-row .v small{font-size:.85rem;font-family:var(--sans);color:var(--muted2);font-weight:300;letter-spacing:0}
+.order-actions{display:grid;gap:9px;margin-top:16px}
+@media(min-width:600px){.order-actions{grid-template-columns:1fr 1fr}}
+.order-actions .btn{width:100%;text-align:center}
+textarea.order-text{width:100%;margin-top:14px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:14px;color:var(--muted);font-family:var(--sans);font-size:.86rem;padding:13px;resize:vertical;min-height:104px}
+
+/* mix and match */
+.mix-slots{display:grid;gap:12px}
+@media(min-width:760px){.mix-slots{grid-template-columns:1fr 1fr}}
+.mix-slot{background:var(--panel2);border:1px solid var(--line-soft);border-radius:14px;padding:16px;text-align:left}
+.mix-slot.done{border-color:var(--rose)}
+.mix-slot h4{font-family:var(--serif);font-size:1.2rem;color:var(--rose-hi);margin:0;font-weight:600;letter-spacing:.03em}
+.mix-slot h4 span{color:var(--muted2);font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-left:8px}
+.mix-field{margin-top:11px}
+.mix-field label{display:block;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:5px}
+.mix-field select{width:100%;background:var(--bg2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-family:var(--sans);font-size:.95rem;font-weight:300}
+.mix-hint{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+
+/* ---------- how it works ---------- */
+.steps{display:grid;gap:12px}
+@media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 18px}
+.step .n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--rose-deep);line-height:1}
+.step h3{font-size:1rem;font-weight:500;letter-spacing:.04em;margin:9px 0 5px}
+.step p{color:var(--muted);font-size:.9rem;margin:0}
+.info-cards{display:grid;gap:12px;margin-top:12px}
+@media(min-width:860px){.info-cards{grid-template-columns:repeat(3,1fr)}}
+.info-card{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--panel)}
+.info-card .k{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);font-weight:600}
+.info-card h3{font-family:var(--serif);font-size:1.45rem;margin:7px 0 6px;color:var(--text);font-weight:600}
+.info-card p{color:var(--muted);margin:0;font-size:.94rem}
+.info-card p b{color:var(--rose-hi);font-weight:600}
+
+/* ---------- footer ---------- */
+footer{margin-top:64px;border-top:1px solid var(--line-soft);padding:34px 18px 90px;text-align:center}
+footer .fmark{font-family:var(--serif);font-size:1.7rem;letter-spacing:.14em;color:var(--rose-hi);font-weight:700}
+footer .fscript{font-family:var(--script);font-size:1.9rem;color:var(--rose);margin-top:4px}
+footer p{color:var(--muted2);font-size:.85rem;margin:8px 0 0}
+footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;color:var(--muted);margin-top:14px}
+
+/* sticky mobile order bar */
+.orderbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(13,8,9,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px}
+.orderbar .ob-t{flex:1;font-size:.86rem;color:var(--muted);line-height:1.3}
+.orderbar .ob-t b{color:var(--rose-hi);font-weight:600;display:block;font-size:.94rem}
+.orderbar .btn{padding:12px 20px;font-size:.82rem;white-space:nowrap}
+@media(min-width:900px){.orderbar{display:none}footer{padding-bottom:40px}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="mark" href="#top" aria-label="Kutie Kalories, back to top"><img src="assets/logo-transparent.png" alt="Kutie Kalories logo" width="1206" height="1501" /></a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#bundles">Bundles</a>
+      <a href="#menu">Menu</a>
+      <a href="#build">Build</a>
+      <a href="#order-info">Order</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <img class="hero-logo" src="assets/logo-transparent.png" alt="Kutie Kalories logo: rose gold KK monogram with a heart, Kutie Kalories" width="1206" height="1501" />
+    <p class="hero-slogan"><span class="slogan-rule" aria-hidden="true"></span>Fuel Your Sparkle<span class="slogan-rule" aria-hidden="true"></span></p>
+    <p class="hero-script">Good Food, Good Energy,<br />At a Brighter You</p>
+    <p class="hero-tag">Pasta bento meal prep, made fresh each week. Pick a bundle, choose your meals, and we handle the rest.</p>
+    <div>
+      <span class="deadline-chip"><span class="dot" aria-hidden="true"></span><span id="deadlineText">Order by <b>Wednesday 8 PM</b> for the following week</span></span>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn btn-rose" href="#bundles">See the bundles</a>
+      <a class="btn btn-ghost" href="#build">Build your box</a>
+    </div>
+
+    <div class="includes wrap" style="padding:0">
+      <h2>Every bento includes</h2>
+      <div class="includes-grid">
+        <div class="inc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15c0-4 3.5-7 8-7 1.5-2 4-3 6-2.5C17.5 8 19 10 19 12.5M3 18h18M5 21h14" stroke-linecap="round"/></svg>
+          <b>1 Pasta Entrée</b><span>Your pick from 12 meals</span>
+        </div>
+        <div class="inc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4c3 0 5 2 5 5l4-3c1.5 2.5 1 6-1.5 8L8 20c-2.5 1.5-5.5 0-6.5-2.5C.7 15 2 12.5 4 11 3 8 4.5 4 7 4Z" stroke-linejoin="round" transform="translate(2 1) scale(.9)"/></svg>
+          <b>1 Protein Choice</b><span>Chicken, Ground Beef, or Ground Turkey</span>
+        </div>
+        <div class="inc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C6 17 4 11 5 4c7 0 12 2.5 14 8-1 5-4 8-7 9Zm0 0c0-6 2-10 5-13" stroke-linecap="round"/></svg>
+          <b>1 Vegetable Side</b><span>Fresh, seasoned vegetables</span>
+        </div>
+        <div class="inc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10c0-2.5 3.5-4 8-4s8 1.5 8 4v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7Z" stroke-linejoin="round"/></svg>
+          <b>1 Bread Option</b><span>Garlic Bread or Sweet Bread</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUNDLES -->
+  <section id="bundles">
+    <div class="sec-head">
+      <div class="rule"><span>Meal Prep Bundles</span></div>
+      <h2>Choose Your Bundle</h2>
+      <p>Fresh. Balanced. Delicious. Every bundle includes your choice of meals, protein, vegetable, and bread in every box. Repeats allowed, mix and match your favorites.</p>
+    </div>
+    <div class="wrap">
+      <div class="bundles" id="bundleGrid"></div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="sec-head">
+      <div class="rule"><span>The Menu</span></div>
+      <h2>12 Pasta Bentos</h2>
+      <p>Tap “Add to box” on any meal to start building it in the builder below. Food photos show each dish style.</p>
+    </div>
+    <div class="wrap">
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- SIDES -->
+  <section id="sides">
+    <div class="sec-head">
+      <div class="rule"><span>Make It Yours</span></div>
+      <h2>Choose Your Sides</h2>
+      <p>Every bento box includes 1 vegetable side plus 1 bread option, picked per box.</p>
+    </div>
+    <div class="wrap">
+      <div class="sides">
+        <div class="side-card">
+          <h3>Vegetable Options</h3>
+          <p>One with every bento.</p>
+          <div class="chips" id="vegChips"></div>
+        </div>
+        <div class="side-card">
+          <h3>Bread Options</h3>
+          <p>One with every bento.</p>
+          <div class="chips" id="breadChips"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDER -->
+  <section id="build">
+    <div class="sec-head">
+      <div class="rule"><span>Build Your Order</span></div>
+      <h2>Build Your Bento Box</h2>
+      <p>Pick a bundle, fill each box, then copy your order and send it to us to confirm. Pickup is free, delivery is available for an additional cost.</p>
+    </div>
+    <div class="wrap">
+      <div class="builder">
+        <h3>Your order</h3>
+        <p class="sub" id="builderSub">Start by choosing a bundle.</p>
+
+        <p class="step-label">Order style</p>
+        <div class="fulfil" id="modePick">
+          <button class="pick on" type="button" data-mode="same"><b>Same For All</b><span>One entrée, protein, veg &amp; bread for every bento</span></button>
+          <button class="pick" type="button" data-mode="mix"><b>Mix and Match</b><span>Different picks for each bento in the bundle</span></button>
+        </div>
+
+        <p class="step-label">1 · Bundle</p>
+        <div class="pick-row" id="bundlePick"></div>
+
+        <div id="singlePickers">
+        <p class="step-label">2 · Pasta entrée</p>
+        <div class="entree-grid" id="entreePick"></div>
+
+        <p class="step-label">3 · Protein</p>
+        <div class="pick-row" id="proteinPick"></div>
+
+        <p class="step-label">4 · Vegetable side</p>
+        <div class="pick-row" id="vegPick"></div>
+
+        <p class="step-label">5 · Bread</p>
+        <div class="pick-row" id="breadPick"></div>
+        </div>
+
+        <div id="mixPickers" hidden>
+          <p class="step-label">2 · Pick each bento</p>
+          <p class="mix-hint">Every bento gets its own entrée, protein, vegetable, and bread. Fill all four picks on a bento and it is added to your order summary below, numbered by bento.</p>
+          <div class="mix-slots" id="mixSlots"></div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-meta"><span id="progressText">No bundle selected yet</span><b id="progressCount"></b></div>
+          <div class="progress" role="progressbar" aria-label="Boxes filled" id="progressBar"><i></i></div>
+        </div>
+
+        <button class="btn btn-rose addbento" id="addBentoBtn" type="button">Add this bento to my order</button>
+        <p class="msg" id="builderMsg" role="status" aria-live="polite"></p>
+
+        <div id="boxListWrap"></div>
+
+        <p class="step-label">6 · Pickup or delivery</p>
+        <div class="fulfil" id="fulfilPick">
+          <button class="pick on" type="button" data-fulfil="Pickup (free)"><b>Pickup</b><span>Free</span></button>
+          <button class="pick" type="button" data-fulfil="Delivery (additional cost, confirmed at checkout)"><b>Delivery</b><span>Additional cost, based on your location</span></button>
+        </div>
+
+        <div class="total-row">
+          <span class="t">Bundle total</span>
+          <span class="v" id="totalOut">$0 <small>· delivery extra if chosen</small></span>
+        </div>
+
+        <label class="step-label" for="orderText" style="display:block">Your order summary</label>
+        <textarea class="order-text" id="orderText" readonly>Pick a bundle and add your bentos, and your order summary will appear here, ready to copy and send.</textarea>
+        <div class="order-actions">
+          <button class="btn btn-rose" id="copyBtn" type="button">Copy my order</button>
+          <button class="btn btn-ghost" id="downloadBtn" type="button">Download order (.txt)</button>
+        </div>
+        <p class="msg" id="copyMsg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER INFO -->
+  <section id="order-info">
+    <div class="sec-head">
+      <div class="rule"><span>Good To Know</span></div>
+      <h2>How Ordering Works</h2>
+    </div>
+    <div class="wrap">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Choose your bundle</h3><p>Mini Prep (3), Weekly Glow (5), or Fuel Your Sparkle (7).</p></div>
+        <div class="step"><div class="n">2</div><h3>Select your meals</h3><p>Pick a pasta entrée for every box. Repeats are welcome.</p></div>
+        <div class="step"><div class="n">3</div><h3>Pick proteins and sides</h3><p>Choose a protein, a vegetable, and a bread for every bento.</p></div>
+        <div class="step"><div class="n">4</div><h3>Send and confirm</h3><p>Copy your order from the builder and send it to us before the deadline.</p></div>
+      </div>
+      <div class="info-cards">
+        <div class="info-card">
+          <span class="k">Order Deadline</span>
+          <h3>Wednesday, 8 PM</h3>
+          <p>Place your weekly order by <b>Wednesday at 8 PM</b> for pickup or delivery the <b>following week</b>.</p>
+        </div>
+        <div class="info-card">
+          <span class="k">Pickup</span>
+          <h3>Always Free</h3>
+          <p><b>Free pickup</b> at our designated location. The exact address is provided at checkout.</p>
+        </div>
+        <div class="info-card">
+          <span class="k">Delivery</span>
+          <h3>Available Near You</h3>
+          <p>Delivery is available for an <b>additional cost</b> based on your location. The fee is calculated and confirmed at checkout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="fmark">KUTIE KALORIES</div>
+  <div class="fscript">Good Food · Good Energy · At a Brighter You</div>
+  <p>Fresh meals · Real ingredients · Made with love</p>
+  <p class="slogan">Fuel · Your · Sparkle</p>
+</footer>
+
+<div class="orderbar">
+  <div class="ob-t"><b id="obText">Bundles from $52</b><span id="obSub">Order by Wed 8 PM</span></div>
+  <a class="btn btn-rose" href="#build">Build your box</a>
+</div>
+
+<script>
+var MEALS = [
+  {n:1,  name:"Chicken Alfredo Penne",        img:"assets/meal-01-alfredo.jpg",   alt:"Chicken Alfredo penne baked with melted cheese and herbs", desc:"Creamy Alfredo sauce with seasoned chicken, Parmesan and herbs."},
+  {n:2,  name:"Classic Spaghetti",            img:"assets/meal-02-spaghetti.jpg", alt:"Classic spaghetti with savory marinara meat sauce", desc:"Spaghetti tossed in a savory marinara sauce with your choice of protein."},
+  {n:3,  name:"Cheesy Baked Ziti",            img:"assets/meal-03-ziti.jpg",      alt:"Cheesy baked ziti with a golden cheese pull", desc:"Ziti pasta baked with marinara, Italian cheeses and your choice of protein."},
+  {n:4,  name:"Cajun Creamy Pasta",           img:"assets/meal-04-cajun.jpg",     alt:"Creamy Cajun pasta with chicken in a skillet", desc:"Penne pasta in a rich, creamy Cajun sauce with bell peppers and your choice of protein."},
+  {n:5,  name:"Coconut Curry Pasta",          img:"assets/meal-05-curry.jpg",     alt:"Coconut curry pasta with colorful vegetables", desc:"Rotini pasta in a coconut curry sauce with a blend of seasonings and your choice of protein."},
+  {n:6,  name:"Crispy Stuffed Pasta",         img:"assets/meal-06-crispy.jpg",    alt:"Crispy fried stuffed pasta shells on a plate", desc:"Jumbo shells stuffed with seasoned meat, cheese and herbs, breaded and fried to golden perfection, served with marinara."},
+  {n:7,  name:"Chicken Parmesan Pasta",       img:"assets/meal-07-parm.jpg",      alt:"Chicken Parmesan pasta bake with melted mozzarella", desc:"Crispy or oven-baked chicken, penne pasta, marinara and melted mozzarella."},
+  {n:8,  name:"Taco Beef Pasta",              img:"assets/meal-08-taco.jpg",      alt:"Cheesy taco beef pasta in a skillet", desc:"Pasta with seasoned ground beef, taco seasoning, tomatoes and melted cheese."},
+  {n:9,  name:"Creamy Beef Macaroni",         img:"assets/meal-09-beefmac.jpg",   alt:"Creamy beef macaroni pasta", desc:"Elbow macaroni in a creamy cheese sauce with seasoned ground beef."},
+  {n:10, name:"Ground Turkey Stuffed Shells", img:"assets/meal-10-shells.jpg",    alt:"Baked stuffed shells in marinara sauce", desc:"Jumbo shells filled with seasoned ground turkey, ricotta and mozzarella, baked in marinara sauce."},
+  {n:11, name:"Fried Ravioli Bento",          img:"assets/meal-11-ravioli.jpg",   alt:"Crispy fried ravioli with marinara dipping sauce", desc:"Crispy breaded ravioli with marinara sauce. Seasoned meat marinara on the side, optional."},
+  {n:12, name:"Chicken Crebano",              img:"assets/meal-12-crebano.jpg",   alt:"Chicken Crebano: crispy chicken with penne and melted mozzarella", desc:"Crispy chicken cutlet, penne, marinara and melted mozzarella."}
+];
+var BUNDLES = [
+  {id:"mini",   name:"THE MINI PREP",      count:3, price:52,  blurb:"Perfect for a quick start or light meal prep."},
+  {id:"glow",   name:"THE WEEKLY GLOW",    count:5, price:88,  blurb:"Our most popular bundle. Great for the work week.", pop:true},
+  {id:"sparkle",name:"FUEL YOUR SPARKLE",  count:7, price:123, blurb:"Meal prep for the whole week. Stay fueled and focused."}
+];
+var PROTEINS = ["Chicken","Ground Beef","Ground Turkey"];
+var VEG = ["Broccoli","Green Beans","Roasted Zucchini","Seasoned Corn","Bell Peppers"];
+var BREADS = ["Garlic Bread","Sweet Bread"];
+
+var state = { bundle:null, entree:null, protein:null, veg:null, bread:null, boxes:[], fulfil:"Pickup (free)", mode:"same", mix:[] };
+
+function $(id){ return document.getElementById(id); }
+function money(v){ return "$" + v.toFixed(2).replace(/\.00$/,""); }
+function perBox(b){ return "$" + (b.price / b.count).toFixed(2) + " per bento"; }
+
+/* ----- render bundles ----- */
+$("bundleGrid").innerHTML = BUNDLES.map(function(b){
+  return '<article class="bundle" data-bundle-card="' + b.id + '">' +
+    (b.pop ? '<span class="pop-tag">Most Popular ♥</span>' : '') +
+    '<h3>' + b.name + '</h3><div class="count">' + b.count + ' Bentos</div>' +
+    '<div class="price">$' + b.price + '</div><div class="per">' + perBox(b) + '</div>' +
+    '<ul>' +
+      '<li><b>' + b.count + ' single-serving</b> bento boxes</li>' +
+      '<li>Choose your meals, <b>repeats allowed</b></li>' +
+      '<li><b>Protein choice</b> for each meal</li>' +
+      '<li><b>Vegetable and bread</b> with every meal</li>' +
+      '<li>' + b.blurb + '</li>' +
+    '</ul>' +
+    '<button class="btn btn-rose" type="button" data-pick-bundle="' + b.id + '">Build this bundle</button>' +
+    '<span class="chosen-note">Selected below ✓</span>' +
+  '</article>';
+}).join("");
+
+/* ----- render menu ----- */
+$("menuGrid").innerHTML = MEALS.map(function(m){
+  return '<article class="meal">' +
+    '<figure><img src="' + m.img + '" alt="' + m.alt + '" width="1000" height="750" /><span class="num">' + m.n + '</span></figure>' +
+    '<div class="body"><h3>' + m.name + '</h3><p>' + m.desc + '</p>' +
+    '<button class="add" type="button" data-add-meal="' + m.n + '">Add to box</button></div></article>';
+}).join("");
+
+/* ----- sides chips ----- */
+$("vegChips").innerHTML = VEG.map(function(v){ return '<span class="chip"><i>●</i>' + v + '</span>'; }).join("");
+$("breadChips").innerHTML = BREADS.map(function(v){ return '<span class="chip"><i>●</i>' + v + '</span>'; }).join("");
+
+/* ----- builder pickers ----- */
+function pickRow(el, items, key, render){
+  el.innerHTML = items.map(function(it, i){
+    return '<button class="pick" type="button" data-i="' + i + '">' + render(it) + '</button>';
+  }).join("");
+  el.addEventListener("click", function(e){
+    var btn = e.target.closest(".pick"); if(!btn) return;
+    state[key] = items[parseInt(btn.getAttribute("data-i"), 10)];
+    Array.prototype.forEach.call(el.querySelectorAll(".pick"), function(p){ p.classList.remove("on"); });
+    btn.classList.add("on");
+    setMsg("");
+    refresh();
+  });
+}
+pickRow($("bundlePick"), BUNDLES, "bundle", function(b){ return b.name + " · " + b.count + " bentos · <small>$" + b.price + "</small>"; });
+pickRow($("proteinPick"), PROTEINS, "protein", function(p){ return p; });
+pickRow($("vegPick"), VEG, "veg", function(v){ return v; });
+pickRow($("breadPick"), BREADS, "bread", function(b){ return b; });
+
+$("entreePick").innerHTML = MEALS.map(function(m){
+  return '<button class="pick" type="button" data-entree="' + m.n + '"><b>' + m.n + '. ' + m.name + '</b><span>Pasta entrée</span></button>';
+}).join("");
+$("entreePick").addEventListener("click", function(e){
+  var btn = e.target.closest(".pick"); if(!btn) return;
+  var n = parseInt(btn.getAttribute("data-entree"), 10);
+  state.entree = MEALS[n - 1];
+  Array.prototype.forEach.call($("entreePick").querySelectorAll(".pick"), function(p){ p.classList.remove("on"); });
+  btn.classList.add("on");
+  setMsg("");
+  refresh();
+});
+
+function selectBundle(b, scroll){
+  state.bundle = b;
+  if (state.boxes.length > b.count) state.boxes = state.boxes.slice(0, b.count);
+  if (state.mode === "mix"){ ensureMix(); renderMix(); }
+  Array.prototype.forEach.call($("bundlePick").querySelectorAll(".pick"), function(p, i){ p.classList.toggle("on", BUNDLES[i] === b); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-bundle-card]"), function(card){ card.classList.toggle("selected", card.getAttribute("data-bundle-card") === b.id); });
+  refresh();
+  if (scroll) document.getElementById("build").scrollIntoView({behavior:"smooth"});
+}
+document.addEventListener("click", function(e){
+  var bb = e.target.closest("[data-pick-bundle]");
+  if (bb){ var b = BUNDLES.filter(function(x){ return x.id === bb.getAttribute("data-pick-bundle"); })[0]; selectBundle(b, true); return; }
+  var am = e.target.closest("[data-add-meal]");
+  if (am){
+    var n = parseInt(am.getAttribute("data-add-meal"), 10);
+    if (state.mode === "mix"){
+      if (!state.bundle){ setMode("mix"); document.getElementById("build").scrollIntoView({behavior:"smooth"}); setMsg("Pick a bundle first, then each bento slot will appear here.", true); return; }
+      ensureMix();
+      var slotIdx = -1;
+      for (var si = 0; si < state.mix.length; si++){ if (!state.mix[si].entree){ slotIdx = si; break; } }
+      if (slotIdx === -1) slotIdx = 0;
+      state.mix[slotIdx].entree = MEALS[n - 1].name;
+      renderMix();
+      document.getElementById("build").scrollIntoView({behavior:"smooth"});
+      setMsg(MEALS[n-1].name + " set as Bento " + (slotIdx + 1) + ". Now pick its protein, vegetable, and bread on that bento card.");
+      refresh();
+      return;
+    }
+    state.entree = MEALS[n - 1];
+    Array.prototype.forEach.call($("entreePick").querySelectorAll(".pick"), function(p){ p.classList.toggle("on", parseInt(p.getAttribute("data-entree"),10) === n); });
+    document.getElementById("build").scrollIntoView({behavior:"smooth"});
+    setMsg(MEALS[n-1].name + " selected. Now pick its protein, vegetable, and bread, then add it.");
+  }
+});
+
+$("fulfilPick").addEventListener("click", function(e){
+  var btn = e.target.closest(".pick"); if(!btn) return;
+  state.fulfil = btn.getAttribute("data-fulfil");
+  Array.prototype.forEach.call($("fulfilPick").querySelectorAll(".pick"), function(p){ p.classList.remove("on"); });
+  btn.classList.add("on");
+  refresh();
+});
+
+/* ----- mix and match ----- */
+function mixComplete(m){ return !!(m && m.entree && m.protein && m.veg && m.bread); }
+function ensureMix(){
+  if (!state.bundle){ state.mix = []; return; }
+  while (state.mix.length < state.bundle.count) state.mix.push({entree:null, protein:null, veg:null, bread:null});
+  if (state.mix.length > state.bundle.count) state.mix = state.mix.slice(0, state.bundle.count);
+}
+function mixOptions(items, current, placeholder){
+  var out = '<option value="">' + placeholder + '</option>';
+  items.forEach(function(it){ out += '<option value="' + it + '"' + (it === current ? ' selected' : '') + '>' + it + '</option>'; });
+  return out;
+}
+function renderMix(){
+  ensureMix();
+  var c = $("mixSlots");
+  if (!state.bundle){ c.innerHTML = '<div class="empty-note">Pick a bundle above first, then each bento slot will appear here.</div>'; return; }
+  c.innerHTML = state.mix.map(function(m, i){
+    var mealNames = MEALS.map(function(x){ return x.name; });
+    return '<div class="mix-slot' + (mixComplete(m) ? ' done' : '') + '">' +
+      '<h4>Bento ' + (i + 1) + '<span>' + (mixComplete(m) ? 'Ready ✓' : 'Pick all four') + '</span></h4>' +
+      '<div class="mix-field"><label for="mix-entree-' + i + '">Pasta entrée</label><select id="mix-entree-' + i + '" data-mix="' + i + '" data-field="entree">' + mixOptions(mealNames, m.entree, 'Choose an entrée…') + '</select></div>' +
+      '<div class="mix-field"><label for="mix-protein-' + i + '">Protein</label><select id="mix-protein-' + i + '" data-mix="' + i + '" data-field="protein">' + mixOptions(PROTEINS, m.protein, 'Choose a protein…') + '</select></div>' +
+      '<div class="mix-field"><label for="mix-veg-' + i + '">Vegetable side</label><select id="mix-veg-' + i + '" data-mix="' + i + '" data-field="veg">' + mixOptions(VEG, m.veg, 'Choose a vegetable…') + '</select></div>' +
+      '<div class="mix-field"><label for="mix-bread-' + i + '">Bread</label><select id="mix-bread-' + i + '" data-mix="' + i + '" data-field="bread">' + mixOptions(BREADS, m.bread, 'Choose a bread…') + '</select></div>' +
+    '</div>';
+  }).join("");
+}
+$("mixSlots").addEventListener("change", function(e){
+  var s = e.target.closest("select"); if(!s) return;
+  var i = parseInt(s.getAttribute("data-mix"), 10);
+  state.mix[i][s.getAttribute("data-field")] = s.value || null;
+  var slot = s.closest(".mix-slot");
+  if (slot){
+    slot.classList.toggle("done", mixComplete(state.mix[i]));
+    var tag = slot.querySelector("h4 span"); if (tag) tag.textContent = mixComplete(state.mix[i]) ? "Ready ✓" : "Pick all four";
+  }
+  setMsg(mixComplete(state.mix[i]) ? "Bento " + (i + 1) + " is set: " + state.mix[i].entree + " with " + state.mix[i].protein + "." : "");
+  refresh();
+});
+function setMode(mode){
+  state.mode = mode;
+  Array.prototype.forEach.call($("modePick").querySelectorAll(".pick"), function(p){ p.classList.toggle("on", p.getAttribute("data-mode") === mode); });
+  $("singlePickers").hidden = mode !== "same";
+  $("mixPickers").hidden = mode !== "mix";
+  $("addBentoBtn").style.display = mode === "same" ? "" : "none";
+  if (mode === "mix"){
+    renderMix();
+    setMsg(state.bundle ? "Mix and Match: give each bento its own entrée, protein, vegetable, and bread." : "Mix and Match: pick a bundle first, then fill each bento.");
+  } else {
+    setMsg("");
+  }
+  refresh();
+}
+$("modePick").addEventListener("click", function(e){
+  var btn = e.target.closest(".pick"); if(!btn) return;
+  setMode(btn.getAttribute("data-mode"));
+});
+
+function setMsg(t, err){ var m = $("builderMsg"); m.textContent = t || ""; m.className = "msg" + (err ? " err" : ""); }
+
+$("addBentoBtn").addEventListener("click", function(){
+  if (!state.bundle) return setMsg("Pick a bundle first (step 1).", true);
+  if (state.boxes.length >= state.bundle.count) return setMsg("Your " + state.bundle.name + " is full at " + state.bundle.count + " bentos. Remove one to swap it.", true);
+  var missing = [];
+  if (!state.entree) missing.push("a pasta entrée");
+  if (!state.protein) missing.push("a protein");
+  if (!state.veg) missing.push("a vegetable");
+  if (!state.bread) missing.push("a bread");
+  if (missing.length) return setMsg("Almost there: choose " + missing.join(", ") + " for this bento.", true);
+  state.boxes.push({entree: state.entree.name, protein: state.protein, veg: state.veg, bread: state.bread});
+  setMsg("Bento " + state.boxes.length + " of " + state.bundle.count + " added: " + state.entree.name + ". Pick the next one, repeats are fine.");
+  refresh();
+});
+
+function refresh(){
+  var b = state.bundle;
+  var isMix = state.mode === "mix";
+  var displayBoxes;
+  if (isMix){
+    ensureMix();
+    if (b && $("mixSlots").querySelectorAll(".mix-slot").length !== b.count) renderMix();
+    displayBoxes = [];
+    state.mix.forEach(function(m, i){ if (mixComplete(m)) displayBoxes.push({slot:i + 1, entree:m.entree, protein:m.protein, veg:m.veg, bread:m.bread}); });
+  } else {
+    displayBoxes = state.boxes.map(function(box, i){ return {slot:i + 1, entree:box.entree, protein:box.protein, veg:box.veg, bread:box.bread}; });
+  }
+  var filled = displayBoxes.length;
+  if (b){
+    $("builderSub").textContent = b.name + ": " + b.count + " bentos for $" + b.price + " (" + perBox(b) + "). " + (isMix ? "Mix and Match: fill each bento below with its own picks." : "Fill every box below.");
+    $("progressText").innerHTML = "Boxes filled for <b>" + b.name + "</b>";
+    $("progressCount").textContent = filled + " of " + b.count;
+    $("progressBar").querySelector("i").style.width = Math.round(filled / b.count * 100) + "%";
+    $("progressBar").setAttribute("aria-valuenow", filled);
+    $("totalOut").innerHTML = "$" + b.price + " <small>· " + b.count + " bentos · delivery extra if chosen</small>";
+    $("obText").textContent = b.name + " · $" + b.price;
+    $("obSub").textContent = filled + " of " + b.count + " boxes filled · Wed 8 PM deadline";
+  } else {
+    $("progressText").textContent = "No bundle selected yet";
+    $("progressCount").textContent = "";
+    $("totalOut").innerHTML = "$0 <small>· pick a bundle to start</small>";
+  }
+  var wrap = $("boxListWrap");
+  if (!displayBoxes.length){
+    wrap.innerHTML = '<div class="empty-note">' + (isMix ? "No bentos finished yet. Fill all four picks on a bento card above and it will appear here, numbered by bento." : "No bentos added yet. Your boxes will appear here as you build them.") + '</div>';
+  } else {
+    wrap.innerHTML = '<ul class="box-list">' + displayBoxes.map(function(box, i){
+      return '<li><span class="n">' + box.slot + '</span><span class="d"><b>' + (isMix ? 'Bento ' + box.slot + ': ' : '') + box.entree + '</b><span>' + box.protein + ' · ' + box.veg + ' · ' + box.bread + '</span></span>' +
+        (isMix ? '' : '<button class="rm" type="button" data-rm="' + i + '" aria-label="Remove bento ' + (i + 1) + '">×</button>') + '</li>';
+    }).join("") + '</ul>';
+  }
+  /* order summary text */
+  if (b && filled){
+    var lines = ["KUTIE KALORIES ORDER", "Bundle: " + b.name + " (" + b.count + " bentos) · $" + b.price];
+    if (isMix) lines.push("Style: Mix and Match");
+    displayBoxes.forEach(function(box){ lines.push("Bento " + box.slot + ": " + box.entree + " | Protein: " + box.protein + " | Veg: " + box.veg + " | Bread: " + box.bread); });
+    if (filled < b.count) lines.push("(" + (b.count - filled) + " more bento" + (b.count - filled > 1 ? "s" : "") + " still to choose)");
+    lines.push("Pickup/Delivery: " + state.fulfil);
+    lines.push("Total: $" + b.price + (state.fulfil.indexOf("Delivery") === 0 ? " + delivery fee (confirmed at checkout)" : ""));
+    lines.push("Order deadline: Wednesday 8 PM for the following week.");
+    $("orderText").value = lines.join("\n");
+  } else {
+    $("orderText").value = "Pick a bundle and add your bentos, and your order summary will appear here, ready to copy and send.";
+  }
+}
+$("boxListWrap").addEventListener("click", function(e){
+  var rm = e.target.closest("[data-rm]"); if(!rm) return;
+  state.boxes.splice(parseInt(rm.getAttribute("data-rm"), 10), 1);
+  setMsg("Bento removed.");
+  refresh();
+});
+refresh();
+
+/* ----- copy + download ----- */
+function orderReady(){
+  var filledCount = state.bundle ? (state.mode === "mix" ? state.mix.filter(mixComplete).length : state.boxes.length) : 0;
+  if (!state.bundle || !filledCount){ $("copyMsg").textContent = state.mode === "mix" ? "Finish at least one bento first, then copy your order." : "Add at least one bento first, then copy your order."; return false; }
+  if (filledCount < state.bundle.count){ $("copyMsg").textContent = "Heads up: " + (state.bundle.count - filledCount) + " box(es) are still empty. Copy anyway, or finish filling them first."; return true; }
+  return true;
+}
+$("copyBtn").addEventListener("click", function(){
+  if (!orderReady()) return;
+  var text = $("orderText").value;
+  function done(){ $("copyMsg").textContent = "Copied. Paste it in a DM or message to place your order before Wednesday 8 PM."; }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, function(){ $("orderText").select(); document.execCommand("copy"); done(); });
+  } else { $("orderText").select(); document.execCommand("copy"); done(); }
+});
+$("downloadBtn").addEventListener("click", function(){
+  if (!orderReady()) return;
+  var blob = new Blob([$("orderText").value], {type:"text/plain"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "kutie-kalories-order.txt";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+  $("copyMsg").textContent = "Order downloaded as a text file.";
+});
+
+/* ----- deadline countdown (America/New_York) ----- */
+function etParts(d){
+  var fmt = new Intl.DateTimeFormat("en-US", {timeZone:"America/New_York", weekday:"short", hour:"numeric", minute:"numeric", hour12:false, day:"numeric"});
+  var p = {}; fmt.formatToParts(d).forEach(function(x){ p[x.type] = x.value; });
+  return p;
+}
+function nextDeadline(){
+  var now = new Date();
+  for (var add = 0; add < 8; add++){
+    var d = new Date(now.getTime() + add * 86400000);
+    var p = etParts(d);
+    if (p.weekday === "Wed"){
+      /* find the UTC moment where ET wall time is Wed 20:00 on that ET date */
+      var guess = new Date(d); guess.setUTCHours(20 + 4, 0, 0, 0); /* EDT approx */
+      for (var k = 0; k < 3; k++){
+        var q = etParts(guess);
+        var errH = 20 - parseInt(q.hour, 10);
+        guess = new Date(guess.getTime() + errH * 3600000 - parseInt(q.minute, 10) * 60000);
+      }
+      if (guess.getTime() > now.getTime()) return guess;
+    }
+  }
+  return null;
+}
+function tick(){
+  var dl = nextDeadline();
+  if (!dl) return;
+  var ms = dl.getTime() - Date.now();
+  var days = Math.floor(ms / 86400000), hrs = Math.floor(ms % 86400000 / 3600000), min = Math.floor(ms % 3600000 / 60000);
+  var when = days > 0 ? days + "d " + hrs + "h" : hrs + "h " + min + "m";
+  $("deadlineText").innerHTML = "Orders close <b>Wednesday 8 PM ET</b> for next week · <b>" + when + "</b> left";
+}
+tick(); setInterval(tick, 60000);
+</script>
+</body>
+</html>
