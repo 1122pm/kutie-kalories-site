@@ -185,6 +185,7 @@ section{padding:52px 0 6px}
 .checkout-btn{display:block;width:100%;text-align:center;font-size:1.05rem;padding:16px}
 .checkout-btn.off{opacity:.45;pointer-events:none}
 .checkout-note{color:var(--muted);font-size:.88rem;margin:10px 2px 0;text-align:center}
+.cust-input{width:100%;padding:13px 14px;margin:4px 0 10px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);font-size:1rem}
 textarea.order-text{width:100%;margin-top:14px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:14px;color:var(--muted);font-family:var(--sans);font-size:.86rem;padding:13px;resize:vertical;min-height:104px}
 
 /* mix and match */
@@ -390,6 +391,12 @@ footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;col
           <span class="v" id="totalOut">$0 <small>· delivery extra if chosen</small></span>
         </div>
 
+        <div class="checkout-fields">
+          <label class="step-label" for="custName" style="display:block">7 \u00b7 Your name</label>
+          <input class="cust-input" id="custName" type="text" autocomplete="name" placeholder="Name for the order" />
+          <label class="step-label" for="custPhone" style="display:block">8 \u00b7 Your phone</label>
+          <input class="cust-input" id="custPhone" type="tel" autocomplete="tel" placeholder="Phone number" />
+        </div>
         <div class="checkout-row">
           <a class="btn btn-rose checkout-btn off" id="checkoutBtn" href="#" target="_blank" rel="noopener" aria-disabled="true">Checkout</a>
           <p class="checkout-note" id="checkoutNote">Build your box and your checkout button will be ready here.</p>
@@ -475,6 +482,7 @@ var VEG = ["Broccoli","Green Beans","Roasted Zucchini","Seasoned Corn","Bell Pep
 var BREADS = ["Garlic Bread","Sweet Bread"];
 
 var state = { bundle:null, entree:null, protein:null, veg:null, bread:null, boxes:[], fulfil:"Pickup (free)", mode:"same", mix:[] };
+var lastOrder = null;
 
 function $(id){ return document.getElementById(id); }
 function money(v){ return "$" + v.toFixed(2).replace(/\.00$/,""); }
@@ -698,6 +706,7 @@ function refresh(){
         '' + '</li>';
     }).join("") + '</ul>';
   }
+  lastOrder = (b && filled) ? { bundleId:b.id, price:b.price, mode:state.mode, fulfil:state.fulfil, boxes:displayBoxes.map(function(x){ return {slot:x.slot, entree:x.entree, protein:x.protein, veg:x.veg, bread:x.bread}; }) } : null;
   /* checkout button */
   var co = $("checkoutBtn");
   if (b && filled){
@@ -721,6 +730,35 @@ $("boxListWrap").addEventListener("click", function(e){
   refresh();
 });
 refresh();
+
+/* ----- checkout: Square-native first, static payment link as fallback ----- */
+$("checkoutBtn").addEventListener("click", function(e){
+  var co = $("checkoutBtn");
+  if (co.classList.contains("off") || !lastOrder) return;
+  e.preventDefault();
+  var name = $("custName").value.trim();
+  var phone = $("custPhone").value.trim();
+  if (!name || !phone){
+    $("checkoutNote").textContent = "Add your name and phone above so we know whose order this is, then tap Checkout.";
+    if (!name) $("custName").focus(); else $("custPhone").focus();
+    return;
+  }
+  var order = lastOrder;
+  co.classList.add("off"); co.textContent = "One moment\u2026";
+  fetch("/api/checkout", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ bundle: order.bundleId, boxes: order.boxes, fulfil: order.fulfil, name: name, phone: phone }) })
+    .then(function(r){ return r.json().catch(function(){ return {}; }); })
+    .then(function(d){
+      if (d && d.url){ window.location.href = d.url; return; }
+      throw new Error("no url");
+    })
+    .catch(function(){
+      co.classList.remove("off"); co.textContent = "Checkout \u00b7 $" + order.price;
+      window.open(CHECKOUT[order.bundleId], "_blank");
+    });
+});
+if (/[?&]ordered=1/.test(window.location.search)){
+  $("copyMsg").textContent = "Thank you! Your order is in. We will text you to confirm.";
+}
 
 /* ----- deadline countdown (America/New_York) ----- */
 function etParts(d){
