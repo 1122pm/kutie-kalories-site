@@ -5,9 +5,9 @@
 // Requires Vercel env vars: SQUARE_ACCESS_TOKEN, SQUARE_LOCATION_ID.
 // Catalog IDs are filled in once the Square API connection is tested.
 const CATALOG = {
-  mini: "",
-  glow: "",
-  sparkle: ""
+  mini: "QCUUT4ZINVHKURZ6VTTO27S5",
+  glow: "65QXXDSUWVEEXV3LICHB4DG5",
+  sparkle: "AHHKLF26VRIBYBRVZJUJOW2H"
 };
 
 function rid() {
