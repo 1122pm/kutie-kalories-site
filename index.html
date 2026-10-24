@@ -383,7 +383,7 @@ footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;col
         <p class="step-label">6 · Pickup or delivery</p>
         <div class="fulfil" id="fulfilPick">
           <button class="pick on" type="button" data-fulfil="Pickup (free)"><b>Pickup</b><span>Free</span></button>
-          <button class="pick" type="button" data-fulfil="Delivery (additional cost, confirmed at checkout)"><b>Delivery</b><span>Additional cost, based on your location</span></button>
+          <button class="pick" type="button" data-fulfil="Delivery (+$5 fee)"><b>Delivery</b><span>Flat $5 fee</span></button>
         </div>
 
         <div class="total-row">
@@ -396,6 +396,10 @@ footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;col
           <input class="cust-input" id="custName" type="text" autocomplete="name" placeholder="Name for the order" />
           <label class="step-label" for="custPhone" style="display:block">8 \u00b7 Your phone</label>
           <input class="cust-input" id="custPhone" type="tel" autocomplete="tel" placeholder="Phone number" />
+          <div id="addrWrap" style="display:none">
+            <label class="step-label" for="custAddress" style="display:block">Delivery address</label>
+            <input class="cust-input" id="custAddress" type="text" autocomplete="street-address" placeholder="Street address for delivery" />
+          </div>
         </div>
         <div class="checkout-row">
           <a class="btn btn-rose checkout-btn off" id="checkoutBtn" href="#" target="_blank" rel="noopener" aria-disabled="true">Checkout</a>
@@ -689,7 +693,9 @@ function refresh(){
     $("progressCount").textContent = filled + " of " + b.count;
     $("progressBar").querySelector("i").style.width = Math.round(filled / b.count * 100) + "%";
     $("progressBar").setAttribute("aria-valuenow", filled);
-    $("totalOut").innerHTML = "$" + b.price + " <small>· " + b.count + " bentos · delivery extra if chosen</small>";
+    var isDel = state.fulfil.indexOf("Delivery") === 0;
+    $("totalOut").innerHTML = isDel ? "$" + (b.price + 5) + " <small>\u00b7 " + b.count + " bentos \u00b7 includes $5 delivery fee</small>" : "$" + b.price + " <small>\u00b7 " + b.count + " bentos \u00b7 delivery +$5 if chosen</small>";
+    $("addrWrap").style.display = isDel ? "" : "none";
     $("obText").textContent = b.name + " · $" + b.price;
     $("obSub").textContent = filled + " of " + b.count + " boxes filled · Wed 8 PM deadline";
   } else {
@@ -744,8 +750,14 @@ $("checkoutBtn").addEventListener("click", function(e){
     return;
   }
   var order = lastOrder;
+  var address = $("custAddress").value.trim();
+  if (order.fulfil.indexOf("Delivery") === 0 && !address){
+    $("checkoutNote").textContent = "Add the delivery address above so Sin knows where to bring it, then tap Checkout.";
+    $("custAddress").focus();
+    return;
+  }
   co.classList.add("off"); co.textContent = "One moment\u2026";
-  fetch("/api/checkout", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ bundle: order.bundleId, boxes: order.boxes, fulfil: order.fulfil, name: name, phone: phone }) })
+  fetch("/api/checkout", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ bundle: order.bundleId, boxes: order.boxes, fulfil: order.fulfil, name: name, phone: phone, address: address }) })
     .then(function(r){ return r.json().catch(function(){ return {}; }); })
     .then(function(d){
       if (d && d.url){ window.location.href = d.url; return; }
