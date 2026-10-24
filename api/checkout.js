@@ -38,11 +38,13 @@ module.exports = async function handler(req, res) {
   const name = String(body.name || "").slice(0, 80);
   const phone = String(body.phone || "").slice(0, 40);
   const fulfil = String(body.fulfil || "Pickup (free)").slice(0, 120);
+  const address = String(body.address || "").slice(0, 200);
+  const isDelivery = fulfil.indexOf("Delivery") === 0;
 
   const lineItems = [{
     catalog_object_id: CATALOG[bundle],
     quantity: "1",
-    note: ("Customer: " + name + " | Phone: " + phone + " | " + fulfil).slice(0, 500)
+    note: ("Customer: " + name + " | Phone: " + phone + " | " + fulfil + (isDelivery && address ? " | Deliver to: " + address : "")).slice(0, 500)
   }];
   boxes.forEach(function (bx, i) {
     lineItems.push({
@@ -63,7 +65,17 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         idempotency_key: rid(),
-        order: { location_id: locationId, line_items: lineItems },
+        order: (function () {
+          var o = { location_id: locationId, line_items: lineItems };
+          if (isDelivery) {
+            o.service_charges = [{
+              name: "Delivery Fee",
+              amount_money: { amount: 500, currency: "USD" },
+              calculation_phase: "SUBTOTAL_PHASE"
+            }];
+          }
+          return o;
+        })(),
         checkout_options: { redirect_url: "https://kutie-kalories-site.vercel.app/?ordered=1" }
       })
     });
