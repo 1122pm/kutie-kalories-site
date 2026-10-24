@@ -181,6 +181,10 @@ section{padding:52px 0 6px}
 .order-actions{display:grid;gap:9px;margin-top:16px}
 @media(min-width:600px){.order-actions{grid-template-columns:1fr 1fr}}
 .order-actions .btn{width:100%;text-align:center}
+.checkout-row{margin-top:14px;border:1px solid var(--rose);border-radius:18px;padding:16px;background:linear-gradient(180deg,#221216,rgba(34,18,22,0))}
+.checkout-btn{display:block;width:100%;text-align:center;font-size:1.05rem;padding:16px}
+.checkout-btn.off{opacity:.45;pointer-events:none}
+.checkout-note{color:var(--muted);font-size:.88rem;margin:10px 2px 0;text-align:center}
 textarea.order-text{width:100%;margin-top:14px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:14px;color:var(--muted);font-family:var(--sans);font-size:.86rem;padding:13px;resize:vertical;min-height:104px}
 
 /* mix and match */
@@ -392,6 +396,10 @@ footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;col
           <button class="btn btn-rose" id="copyBtn" type="button">Copy my order</button>
           <button class="btn btn-ghost" id="downloadBtn" type="button">Download order (.txt)</button>
         </div>
+        <div class="checkout-row">
+          <a class="btn btn-rose checkout-btn off" id="checkoutBtn" href="#" target="_blank" rel="noopener" aria-disabled="true">Checkout with Square</a>
+          <p class="checkout-note" id="checkoutNote">Build your box and your Square checkout button will be ready here. Send us your order summary too, so we know your picks.</p>
+        </div>
         <p class="msg" id="copyMsg" role="status" aria-live="polite"></p>
       </div>
     </div>
@@ -463,6 +471,11 @@ var BUNDLES = [
   {id:"glow",   name:"THE WEEKLY GLOW",    count:5, price:88,  blurb:"Our most popular bundle. Great for the work week.", pop:true},
   {id:"sparkle",name:"FUEL YOUR SPARKLE",  count:7, price:123, blurb:"Meal prep for the whole week. Stay fueled and focused."}
 ];
+var CHECKOUT = {
+  mini:"https://square.link/u/fBhyHIya",
+  glow:"https://square.link/u/lYUCKLXf",
+  sparkle:"https://square.link/u/xwwIssdp"
+};
 var PROTEINS = ["Chicken","Ground Beef","Ground Turkey"];
 var VEG = ["Broccoli","Green Beans","Roasted Zucchini","Seasoned Corn","Bell Peppers"];
 var BREADS = ["Garlic Bread","Sweet Bread"];
@@ -698,8 +711,20 @@ function refresh(){
     lines.push("Total: $" + b.price + (state.fulfil.indexOf("Delivery") === 0 ? " + delivery fee (confirmed at checkout)" : ""));
     lines.push("Order deadline: Wednesday 8 PM for the following week.");
     $("orderText").value = lines.join("\n");
+    var co = $("checkoutBtn");
+    co.href = CHECKOUT[b.id];
+    co.classList.remove("off");
+    co.setAttribute("aria-disabled", "false");
+    co.textContent = "Checkout with Square · $" + b.price;
+    $("checkoutNote").textContent = "Pay $" + b.price + " for " + b.name + " securely through Square. Send us your order summary too, so we know your picks.";
   } else {
     $("orderText").value = "Pick a bundle and add your bentos, and your order summary will appear here, ready to copy and send.";
+    var co2 = $("checkoutBtn");
+    co2.href = "#";
+    co2.classList.add("off");
+    co2.setAttribute("aria-disabled", "true");
+    co2.textContent = "Checkout with Square";
+    $("checkoutNote").textContent = "Build your box and your Square checkout button will be ready here. Send us your order summary too, so we know your picks.";
   }
 }
 $("boxListWrap").addEventListener("click", function(e){
