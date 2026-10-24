@@ -333,7 +333,7 @@ footer .slogan{letter-spacing:.42em;text-transform:uppercase;font-size:.7rem;col
     <div class="sec-head">
       <div class="rule"><span>Build Your Order</span></div>
       <h2>Build Your Bento Box</h2>
-      <p>Pick a bundle, fill each box, then copy your order and send it to us to confirm. Pickup is free, delivery is available for an additional cost.</p>
+      <p>Pick a bundle, choose your meals, then copy your order and send it to us to confirm. Pickup is free, delivery is available for an additional cost.</p>
     </div>
     <div class="wrap">
       <div class="builder">
@@ -635,7 +635,7 @@ function setMode(mode){
   Array.prototype.forEach.call($("modePick").querySelectorAll(".pick"), function(p){ p.classList.toggle("on", p.getAttribute("data-mode") === mode); });
   $("singlePickers").hidden = mode !== "same";
   $("mixPickers").hidden = mode !== "mix";
-  $("addBentoBtn").style.display = mode === "same" ? "" : "none";
+  $("addBentoBtn").style.display = "none";
   if (mode === "mix"){
     renderMix();
     setMsg(state.bundle ? "Mix and Match: give each bento its own entrée, protein, vegetable, and bread." : "Mix and Match: pick a bundle first, then fill each bento.");
@@ -675,11 +675,14 @@ function refresh(){
     displayBoxes = [];
     state.mix.forEach(function(m, i){ if (mixComplete(m)) displayBoxes.push({slot:i + 1, entree:m.entree, protein:m.protein, veg:m.veg, bread:m.bread}); });
   } else {
-    displayBoxes = state.boxes.map(function(box, i){ return {slot:i + 1, entree:box.entree, protein:box.protein, veg:box.veg, bread:box.bread}; });
+    displayBoxes = [];
+    if (b && state.entree && state.protein && state.veg && state.bread){
+      for (var k = 0; k < b.count; k++) displayBoxes.push({slot:k + 1, entree:state.entree.name, protein:state.protein, veg:state.veg, bread:state.bread});
+    }
   }
   var filled = displayBoxes.length;
   if (b){
-    $("builderSub").textContent = b.name + ": " + b.count + " bentos for $" + b.price + " (" + perBox(b) + "). " + (isMix ? "Mix and Match: fill each bento below with its own picks." : "Fill every box below.");
+    $("builderSub").textContent = b.name + ": " + b.count + " bentos for $" + b.price + " (" + perBox(b) + "). " + (isMix ? "Mix and Match: fill each bento below with its own picks." : "One set of picks fills every box in this bundle.");
     $("progressText").innerHTML = "Boxes filled for <b>" + b.name + "</b>";
     $("progressCount").textContent = filled + " of " + b.count;
     $("progressBar").querySelector("i").style.width = Math.round(filled / b.count * 100) + "%";
@@ -694,11 +697,11 @@ function refresh(){
   }
   var wrap = $("boxListWrap");
   if (!displayBoxes.length){
-    wrap.innerHTML = '<div class="empty-note">' + (isMix ? "No bentos finished yet. Fill all four picks on a bento card above and it will appear here, numbered by bento." : "No bentos added yet. Your boxes will appear here as you build them.") + '</div>';
+    wrap.innerHTML = '<div class="empty-note">' + (isMix ? "No bentos finished yet. Fill all four picks on a bento card above and it will appear here, numbered by bento." : "Choose your entrée, protein, vegetable, and bread above, and every box in your bundle fills at once.") + '</div>';
   } else {
     wrap.innerHTML = '<ul class="box-list">' + displayBoxes.map(function(box, i){
       return '<li><span class="n">' + box.slot + '</span><span class="d"><b>' + (isMix ? 'Bento ' + box.slot + ': ' : '') + box.entree + '</b><span>' + box.protein + ' · ' + box.veg + ' · ' + box.bread + '</span></span>' +
-        (isMix ? '' : '<button class="rm" type="button" data-rm="' + i + '" aria-label="Remove bento ' + (i + 1) + '">×</button>') + '</li>';
+        '' + '</li>';
     }).join("") + '</ul>';
   }
   /* order summary text */
