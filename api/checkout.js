@@ -8,11 +8,9 @@ const CATALOG = {
   glow: "65QXXDSUWVEEXV3LICHB4DG5",
   sparkle: "AHHKLF26VRIBYBRVZJUJOW2H"
 };
-
 function rid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
-
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "method_not_allowed" });
@@ -40,11 +38,14 @@ module.exports = async function handler(req, res) {
   const fulfil = String(body.fulfil || "Pickup (free)").slice(0, 120);
   const address = String(body.address || "").slice(0, 200);
   const isDelivery = fulfil.indexOf("Delivery") === 0;
-
+  const BANDS = { "0-5": 500, "6-10": 800, "11-15": 1200, "16-20": 1500, "over-20": 0 };
+  const BAND_LABEL = { "0-5": "within 5 miles", "6-10": "6-10 miles", "11-15": "11-15 miles", "16-20": "16-20 miles", "over-20": "over 20 miles" };
+  const band = String(body.band || "").slice(0, 10);
+  const fee = (isDelivery && band in BANDS) ? BANDS[band] : 0;
   const lineItems = [{
     catalog_object_id: CATALOG[bundle],
     quantity: "1",
-    note: ("Customer: " + name + " | Phone: " + phone + " | " + fulfil + (isDelivery && address ? " | Deliver to: " + address : "")).slice(0, 500)
+    note: ("Customer: " + name + " | Phone: " + phone + " | " + fulfil + (isDelivery && address ? " | Deliver to: " + address : "") + (isDelivery && band ? " | Distance: " + BAND_LABEL[band] : "") + (isDelivery && band === "over-20" ? " | QUOTE DELIVERY FEE BY TEXT" : "")).slice(0, 500)
   }];
   boxes.forEach(function (bx, i) {
     lineItems.push({
@@ -54,7 +55,6 @@ module.exports = async function handler(req, res) {
       note: ("Protein: " + bx.protein + " | Veg: " + bx.veg + " | Bread: " + bx.bread).slice(0, 500)
     });
   });
-
   try {
     const resp = await fetch("https://connect.squareup.com/v2/online-checkout/payment-links", {
       method: "POST",
@@ -67,10 +67,10 @@ module.exports = async function handler(req, res) {
         idempotency_key: rid(),
         order: (function () {
           var o = { location_id: locationId, line_items: lineItems };
-          if (isDelivery) {
+          if (isDelivery && fee > 0) {
             o.service_charges = [{
               name: "Delivery Fee",
-              amount_money: { amount: 500, currency: "USD" },
+              amount_money: { amount: fee, currency: "USD" },
               calculation_phase: "SUBTOTAL_PHASE"
             }];
           }
